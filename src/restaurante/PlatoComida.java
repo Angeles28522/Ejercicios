@@ -10,34 +10,15 @@ public abstract class PlatoComida extends ProductoBase{
         ArrayList<CategoriaProducto> categoriaProducto = new ArrayList();
         
         categoriaProducto.add(CategoriaProducto.Entrada);
-        categoriaProducto.add(CategoriaProducto.Entrada);
         categoriaProducto.add(CategoriaProducto.Plato_Fuerte);
         categoriaProducto.add(CategoriaProducto.Plato_Fuerte);
         categoriaProducto.add(CategoriaProducto.Bebida);
         categoriaProducto.add(CategoriaProducto.Bebida);
         categoriaProducto.add(CategoriaProducto.Postre);
         
-        for (int i = 0; categoriaProductos.size() >= i; i++){
-            
+        for(int i = 0; i < categoriaProducto.size(); i++){
+         System.out.println();
         }
-        System.out.println();
+        
     }
-    
-    private static class Ingredientes {
-
-        public Ingredientes() {
-            
-        }
-    }
-
-    private static class categoriaProductos {
-
-        private static int size() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        public categoriaProductos() {
-        }
-    }
-    
 }
