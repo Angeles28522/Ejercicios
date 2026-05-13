@@ -3,12 +3,11 @@ package restaurante;
 public abstract class ProductoBase implements ICalculable {
 
     public String Nombre;
-    public String ID;
-    public String Categoria;
-    public int PrecioBase;
+    public int ID;
+    public CategoriaProducto Categoria;
+    public double PrecioBase;
     
-   
-    public ProductoBase(String nombre, String ID, String Categoria, int PrecioBase) {
+    public ProductoBase(String Nombre, int ID, CategoriaProducto Categoria, double PrecioBase) {
         this.Nombre = Nombre;
         this.ID = ID;
         this.Categoria = Categoria;
@@ -16,37 +15,37 @@ public abstract class ProductoBase implements ICalculable {
     }
 
     public String getNombre() {
-        return this.Nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        this.Nombre = nombre;
+        Nombre = nombre;
     }
 
-    public String getID() {
-        return this.ID;
+    public int getID() {
+        return ID;
     }
 
-    public void setID(String Id) {
-        this.ID = Id;
+    public void setID(int Id) {
+        ID = Id;
     }
 
-    public String getCategoria() {
-        return this.Categoria;
+    public CategoriaProducto getCategoria() {
+        return Categoria;
     }
 
-    public void setCategoria(String categoria) {
-        this.Categoria = categoria;
+    public void setCategoria(CategoriaProducto categoria) {
+        Categoria = categoria;
     }
 
-    public int getPrecioBase() {
-        return this.PrecioBase;
+    public double getPrecioBase() {
+        return PrecioBase;
     }
 
-    public void setPrecioBase(int precio) {
-        this.PrecioBase = precio;
+    public void setPrecioBase(double precio) {
+        PrecioBase = precio;
     }
 
-    public abstract void ObtenerDescription();
-    public abstract decimal CalcularDecimal();
+    public abstract String obtenerDescription();
+    public abstract double CalcularTotal();
 }

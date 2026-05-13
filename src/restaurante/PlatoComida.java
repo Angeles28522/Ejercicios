@@ -2,23 +2,41 @@ package restaurante;
 
 import java.util.ArrayList;
 
-public abstract class PlatoComida extends ProductoBase{
+public class PlatoComida extends ProductoBase {
     
-    public PlatoComida(String nombre, String ID, String Categoria, int PrecioBase) {
-        super(nombre, ID, Categoria, PrecioBase);
+    public ArrayList<Ingredientes> ingredientes;
+    private double margenGanancias;
+
+    public PlatoComida(String Nombre, int ID, CategoriaProducto Categoria, double PrecioBase, double margenGanancias) {
+        super(Nombre, ID, Categoria, PrecioBase);
         
-        ArrayList<CategoriaProducto> categoriaProducto = new ArrayList();
-        
-        categoriaProducto.add(CategoriaProducto.Entrada);
-        categoriaProducto.add(CategoriaProducto.Plato_Fuerte);
-        categoriaProducto.add(CategoriaProducto.Plato_Fuerte);
-        categoriaProducto.add(CategoriaProducto.Bebida);
-        categoriaProducto.add(CategoriaProducto.Bebida);
-        categoriaProducto.add(CategoriaProducto.Postre);
-        
-        for(int i = 0; i < categoriaProducto.size(); i++){
-         System.out.println();
-        }
+        this.margenGanancias = margenGanancias;
+        ingredientes = new ArrayList<>();
         
     }
+    
+    public void agregarIngrediente(Ingredientes ingrediente){
+        ingredientes.add(ingrediente);
+    }
+
+    @Override
+    public String obtenerDescription() {
+        return ("Plato de comida " + Nombre + " | $" + this.CalcularTotal());
+    }
+    
+    @Override
+    public double CalcularTotal() {
+        double precioCosto = 0;
+        for (Ingredientes ing : ingredientes) {
+            precioCosto += ing.getPrecioCosto();
+        }
+        return (precioCosto + (precioCosto * this.margenGanancias));
+    }
+    
+    public void consumirIngrediente() {
+        for (Ingredientes ing : ingredientes) {
+            ing.reducirStock(1);
+        }
+    }
+    
 }

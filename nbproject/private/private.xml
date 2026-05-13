@@ -6,10 +6,14 @@
             <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/main.java</file>
             <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/ProductoBase.java</file>
             <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/PlatoComida.java</file>
+            <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/ProductosAgregados.java</file>
+            <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/Ingredientes.java</file>
             <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/CategoriaProducto.java</file>
             <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/UnidadMedida.java</file>
             <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/EstadoPedido.java</file>
             <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/ICalculable.java</file>
+            <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/IGestionableStock.java</file>
+            <file>file:/C:/Users/merar/OneDrive/Desktop/Restaurante/src/restaurante/Venta.java</file>
         </group>
     </open-files>
 </project-private>
