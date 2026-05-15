@@ -49,33 +49,44 @@ public class main {
         menu.add(hamburguesa);
         menu.add(soda);
         menu.add(tiramisu);
-
+        
+        ArrayList<Venta> ventasDelDia = new ArrayList<>();
         double ingresosTotales = 0;
+        int contadorVentas = 1;
 
         while (true) {
             System.out.println("====- Restaurante Seventeen -====");
 
-            System.out.println("1. Ver menu");
+            System.out.println("1.Ver menu");
             System.out.println("2.Inventario");
             System.out.println("3.Nueva venta");
             System.out.println("4.Reporte");
             System.out.println("5.Salir");
-            
+
             int opcion = sc.nextInt();
-            
-            switch(opcion){
-                
+
+            switch (opcion) {
+
                 case 1:
                     
-                    for(ProductoBase p: menu){
-                        System.out.println(p.obtenerDescription());
+                    System.out.println("Menu: ");
+
+                    for (int i = 0; i < menu.size(); i++) {
+                        
+                        System.out.println((i + 1) + ". " + menu.get(i).obtenerDescription());
                     }
+                    System.out.println("Seleccione producto: ");
+                    
+                    int op = sc.nextInt();
+                    
+                    System.out.println("Elegiste: " + menu.get(op - 1));
+                    
                     break;
-                    
+
                 case 2:
-                    
+
                     System.out.println("Inventario:");
-                    
+
                     System.out.println(pan);
                     System.out.println(carne);
                     System.out.println(queso);
@@ -85,41 +96,94 @@ public class main {
                     System.out.println(ensalada);
                     System.out.println(tomates);
                     System.out.println(pepinos);
-                    
+
                     break;
-                    
+
                 case 3:
+
+                    Venta venta = new Venta(contadorVentas);
+                    contadorVentas++;
                     
-                    Venta venta = new Venta(1);
-                    venta.agregarProducto(hamburguesa);
-                    venta.agregarProducto(pizza);
-                    venta.agregarProducto(vino);
+                    int opcionProducto;
                     
-                    hamburguesa.consumirIngrediente();
-                    pizza.consumirIngrediente();
-                    
+                    do{
+                        System.out.println("Nueva venta hecha...");
+                        
+                        for (int i = 0; i< menu.size(); i++){
+                            
+                            System.out.println((i + 1) + ". " + menu.get(i).obtenerDescription());
+                        }
+                        System.out.println("Finalizar compra...");
+                        System.out.println("Seleccione un producto: ");
+                        opcionProducto = sc.nextInt();
+                        
+                        if (opcionProducto == 0){
+                            break;
+                        }
+                        
+                        if (opcionProducto < 1 || opcionProducto > menu.size()){
+                            System.out.println("Opción invalida, Elija una opción valida...");
+                            
+                            continue;
+                        }
+                        
+                        ProductoBase productoSeleccionado = menu.get(opcionProducto - 1);
+                        venta.agregarProducto(productoSeleccionado);
+                        
+                        if(productoSeleccionado instanceof PlatoComida){
+                            PlatoComida platoComida = (PlatoComida) productoSeleccionado;
+                            
+                            platoComida.consumirIngrediente();
+                        }
+                        
+                        System.out.println(productoSeleccionado.getNombre() + " se ha agregado a la venta.");
+                    } while(true);
+
                     venta.cambiarEstado(EstadoPedido.Pagado);
-                    
+
                     venta.mostrarVenta();
-                    
+
                     ingresosTotales += venta.CalcularTotal();
                     
+                    ventasDelDia.add(venta);
+
                     break;
-                    
+
                 case 4:
-                    System.out.println("Ingresos del día: $" + ingresosTotales);
-                    
+                    System.out.println("Reporte del día.");
+
+                    System.out.println("Cantidad de ventas: " + ventasDelDia.size());
+
+                    System.out.println("Ingresos totales: $" + ingresosTotales);
+
+                    System.out.println("Detalles de venta");
+
+                    for(int i = 0;
+                        i < ventasDelDia.size(); i++) {
+
+                        System.out.println("Venta #" + (i + 1));
+
+                        ventasDelDia.get(i).mostrarVenta();
+                    }
+
+                    if(!ventasDelDia.isEmpty()) {
+
+                        double promedio = ingresosTotales / ventasDelDia.size();
+
+                        System.out.println("Ticket promedio: $" + promedio );
+                    }
+
                     break;
-                    
+
                 case 5:
                     System.out.println("Saliendo del menu...");
                     return;
-                    
+
                 default:
                     System.out.println("Opcion invalida");
-                    
+
             }
-            
+
         }
     }
 
