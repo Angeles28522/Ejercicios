@@ -2,21 +2,19 @@ package restaurante;
 
 public class ProductosAgregados extends ProductoBase {
 
-    public double precio;
-
     public ProductosAgregados(String Nombre, int ID, CategoriaProducto Categoria, double PrecioBase) {
         super(Nombre, ID, Categoria, PrecioBase);
-        this.precio = precio;
+        this.PrecioBase = PrecioBase;
     }
 
     @Override
     public String obtenerDescription() {
-        return ("Agregados: " + Nombre + " | $ " + precio);
+        return ("Agregados: " + Nombre + " | $ " + PrecioBase);
     }
 
     @Override
     public double CalcularTotal() {
-        return precio;
+        return PrecioBase;
     }
 
 }

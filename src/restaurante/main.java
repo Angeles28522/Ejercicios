@@ -44,6 +44,7 @@ public class main {
 
         ArrayList<ProductoBase> menu = new ArrayList<>();
 
+        menu.add(ensalada);
         menu.add(pizza);
         menu.add(vino);
         menu.add(hamburguesa);
@@ -75,11 +76,6 @@ public class main {
                         
                         System.out.println((i + 1) + ". " + menu.get(i).obtenerDescription());
                     }
-                    System.out.println("Seleccione producto: ");
-                    
-                    int op = sc.nextInt();
-                    
-                    System.out.println("Elegiste: " + menu.get(op - 1));
                     
                     break;
 
@@ -93,7 +89,7 @@ public class main {
                     System.out.println(masa);
                     System.out.println(salsa);
                     System.out.println(queso);
-                    System.out.println(ensalada);
+                    System.out.println(lechuga);
                     System.out.println(tomates);
                     System.out.println(pepinos);
 
@@ -107,14 +103,12 @@ public class main {
                     int opcionProducto;
                     
                     do{
-                        System.out.println("Nueva venta hecha...");
                         
                         for (int i = 0; i< menu.size(); i++){
                             
                             System.out.println((i + 1) + ". " + menu.get(i).obtenerDescription());
                         }
-                        System.out.println("Finalizar compra...");
-                        System.out.println("Seleccione un producto: ");
+
                         opcionProducto = sc.nextInt();
                         
                         if (opcionProducto == 0){
